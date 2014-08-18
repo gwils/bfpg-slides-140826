@@ -1,4 +1,8 @@
 -- Lists form a monoid
+module Data.Monoid.List where
+
+import Data.Monoid (Monoid (..))
+
 instance Monoid [a] where
   mempty  = []
   mappend = (++)

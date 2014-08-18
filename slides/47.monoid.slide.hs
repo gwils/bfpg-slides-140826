@@ -21,3 +21,5 @@ instance (Bounded a, Ord a) => Monoid (Min a) where
   mempty = Min maxBound
   mappend (Min a) (Min b) = Min (min a b)
 
+
+import Data.Monoid
