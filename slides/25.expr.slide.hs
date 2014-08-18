@@ -20,6 +20,6 @@ exprTFold f g h (Mul e1 e2) = h (exprTFold f g h e1) (exprTFold f g h e2)
 
 -- eval can be written much more easily now
 eval' :: ExprT -> Integer
-eval' = expreTFold id (+) (*)
+eval' = exprTFold id (+) (*)
 
 

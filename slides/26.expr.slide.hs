@@ -23,7 +23,7 @@ exprTFold f g h (Mul e1 e2) = h (exprTFold f g h e1) (exprTFold f g h e2)
 
 eval' :: ExprT -> Integer
 -- {{{
-eval' = expreTFold id (+) (*)
+eval' = exprTFold id (+) (*)
 -- }}}
 
 -- We can write other useful functions on ExprT using exprTFold
