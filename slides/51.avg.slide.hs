@@ -1,12 +1,15 @@
--- Solution: pairs of monoids
+-- Case study: 
+-- let's say we want to compute the average (mean) value 
+-- of a list of values
 
 module Average where
 
-import Data.Monoid
+average :: [Double] -> Maybe Double
+average [] = Nothing
+average ns =
+  let len = length ns
+  in Just (sum ns / fromIntegral len)
 
-avg :: Fractional a => (Product a, Sum a) -> a
-avg (p,s) = getProduct p / getSum s
-
-average' :: Fractional a => [a] -> a
-average' = avg . mconcat . map (\x -> (Product x, Sum 1))
+-- Problem: traverses the list twice;
+-- slow for very large lists
 
