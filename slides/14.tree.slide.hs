@@ -7,8 +7,8 @@ treeSize (Node l _ r) = 1 + treeSize l + treeSize r
 
 -- How about the sum of the data in a tree of Integers?
 treeSum :: Tree Integer -> Integer
-treeSum Empty     = 0
-treeSum (Node l x r)  = x + treeSum l + treeSum r
+treeSum Empty        = 0
+treeSum (Node l x r) = x + treeSum l + treeSum r
 
 -- Or the depth of a tree?
 treeDepth :: Tree a -> Integer

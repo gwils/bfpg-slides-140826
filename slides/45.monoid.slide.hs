@@ -5,7 +5,7 @@
 -- One type cannot have two instances for the same type-class!
 
 -- Solution:
--- Newtypes
+-- Newtypes (but what are newtypes?)
 
 -- Product monoid
 newtype Product a = Product a

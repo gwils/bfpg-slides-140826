@@ -5,7 +5,7 @@
 -- One type cannot have two instances for the same type-class!
 
 -- Solution:
--- Newtypes
+-- Newtypes (but what are newtypes?)
 
 -- Sum monoid
 newtype Sum a = Sum a

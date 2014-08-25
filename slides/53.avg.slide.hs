@@ -6,10 +6,10 @@ import Data.Monoid
 
 type Avg a = (Sum a, Sum Integer)
 
-toAvg :: Floating a => a -> Avg a
+toAvg :: Double -> Avg Double
 toAvg x = (Sum x, Sum 1)
 
-getAvg :: Floating a => Avg a -> a
+getAvg :: Avg Double -> Double
 getAvg (Sum p, Sum n) = p / fromIntegral n
 
 average' :: [Double] -> Maybe Double

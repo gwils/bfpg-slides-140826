@@ -8,3 +8,5 @@
 -- 3. Many functions we may want to write on T will end up being 
 --    expressible as simple folds.
 
+-- This concludes our journey with folds.
+-- On to our next topic: monoids.

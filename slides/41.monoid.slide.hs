@@ -1,7 +1,3 @@
--------------
--- Monoids --
--------------
-
 class Monoid m where
   mempty  :: m
   mappend :: m -> m -> m
@@ -13,11 +9,14 @@ class Monoid m where
 
 -- Laws:
 -- 1. Left identity
---    mempty <> x == x
+leftIdProp :: (Eq m, Monoid m) => m -> Bool
+leftIdProp x = (mempty <> x) == x
 -- 2. Right identity
---    x <> mempty == x
+rightIdProp :: (Eq m, Monoid m) => m -> Bool
+rightIdProp x = x == (x <> mempty)
 -- 3. Associativity
---    (x <> y) <> z == x <> (y <> z)
+assocProp :: (Eq m, Monoid m) => m -> m -> m -> Bool
+assocProp x y z = (x <> (y <> z)) == ((x <> y) <> z)
       
 -- The associativity law means that we can unambiguously write things like
 -- a <> b <> c <> d <> e
