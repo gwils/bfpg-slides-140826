@@ -1,25 +1,27 @@
 -- More monoid examples using newtypes
 
-newtype Max a = Max a
+-- A monoid which stores the greatest element it has seen
+newtype Max a = Max (Maybe a)
   deriving (Eq, Ord, Show)
 
-getMax :: Max a -> a
-getMax (Max a) = a
+getMax :: Max a -> Maybe a
+getMax (Max m) = m
 
-instance (Bounded a, Ord a) => Monoid (Max a) where
-  mempty = Max minBound
-  mappend (Max a) (Max b) = Max (max a b)
+instance (Ord a) => Monoid (Max a) where
+  mempty = Max Nothing
+  mappend (Max Nothing)  b              = b
+  mappend a              (Max Nothing)  = a
+  mappend (Max (Just x)) (Max (Just y)) =
+    Max (Just (max x y))
 
 
-newtype Min a = Min a
-  deriving (Eq, Ord, Show)
 
-getMin :: Min a -> a
-getMin (Min a) = a
 
-instance (Bounded a, Ord a) => Monoid (Min a) where
-  mempty = Min maxBound
-  mappend (Min a) (Min b) = Min (min a b)
+
+
+
+
+
 
 
 import Data.Monoid

@@ -1,13 +1,27 @@
---Pairs form a monoid as long as the individual components do:
+-- More monoid examples using newtypes
 
-instance (Monoid a, Monoid b) => Monoid (a,b) where
-  mempty = (mempty, mempty)
-  (a,b) `mappend` (c,d) = (a `mappend` c, b `mappend` d)
+-- A monoid which stores the least element it has seen
+newtype Min a = Min (Maybe a)
+  deriving (Eq, Ord, Show)
 
-instance (Monoid a, Monoid b, Monoid c) => Monoid (a,b,c) where
-  -- ...
-instance (Monoid a, Monoid b, Monoid c, Monoid d) => Monoid (a,b,c,d) where
-  -- ...
-instance (Monoid a, Monoid b, Monoid c, Monoid d, Monoid e)
-  => Monoid (a,b,c,d,e) where 
-  -- ...
+getMin :: Min a -> Maybe a
+getMin (Min m) = m
+
+instance (Ord a) => Monoid (Min a) where
+  mempty = Min Nothing
+  mappend (Min Nothing)  b              = b
+  mappend a              (Min Nothing)  = a
+  mappend (Min (Just x)) (Min (Just y)) =
+    Min (Just (min x y))
+
+
+
+
+
+
+
+
+
+
+
+import Data.Monoid

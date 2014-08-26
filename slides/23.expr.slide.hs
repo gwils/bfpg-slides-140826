@@ -1,5 +1,4 @@
 -- What can we fold other than trees and lists?
-
 -- Recall the ExprT type and corresponding eval
 -- function from Homework 5
 

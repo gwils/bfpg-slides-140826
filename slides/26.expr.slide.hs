@@ -1,8 +1,3 @@
--- What can we fold other than trees and lists?
-
--- Recall the ExprT type and corresponding eval
--- function from Homework 5
-
 data ExprT = Lit Integer
            | Add ExprT ExprT
            | Mul ExprT ExprT
@@ -27,9 +22,6 @@ eval' = exprTFold id (+) (*)
 -- }}}
 
 -- We can write other useful functions on ExprT using exprTFold
-numLiterals :: ExprT -> Int
+numLiterals :: ExprT -> Integer
 numLiterals = exprTFold (const 1) (+) (+)
-
-
-
 
